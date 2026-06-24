@@ -1,0 +1,16 @@
+{
+  "name": "Java Ant Web App",
+  "image": "mcr.microsoft.com/devcontainers/java:1-21-bookworm",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/ant-sdkman:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "redhat.vscode-xml"
+      ]
+    }
+  },
+  "postCreateCommand": "java -version && ant -version"
+}
