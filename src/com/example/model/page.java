@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +16,6 @@ public class page extends HttpServlet {
 
         try (PrintWriter out = response.getWriter()) {
 
-            // form values
             String name = request.getParameter("name");
             String age = request.getParameter("age");
             String course = request.getParameter("course");
@@ -33,18 +27,18 @@ public class page extends HttpServlet {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
 
-                // Render environment variables
-                String host = System.getenv("DB_HOSmysql-a7dcaeb-onlineokokok-2538.j.aivencloud.comT");
-                String port = System.getenv("13350");
-                String db   = System.getenv("defaultdb");
-                String user = System.getenv("avnadmin");
-                String pass = System.getenv("AVNS_zsVzU151_FGO3iuRyzR");
+                String host = "mysql-a7dcaeb-onlineokokok-2538.j.aivencloud.com";
+                String port = "13350";
+                String db   = "defaultdb";
+                String user = "avnadmin";
+                String pass = "AVNS_zsVzU151_FGO3iuRyzR";
 
                 String url = "jdbc:mysql://" + host + ":" + port + "/" + db + "?sslMode=REQUIRED";
+
                 Connection con = DriverManager.getConnection(url, user, pass);
 
                 PreparedStatement ps = con.prepareStatement(
-                    "insert into student_registration(name, age, course, abcid, mother_name, father_name, applicant_full_name_marathi) values(?,?,?,?,?,?,?)"
+                    "INSERT INTO student_registration(name, age, course, abcid, mother_name, father_name, applicant_full_name_marathi) VALUES (?, ?, ?, ?, ?, ?, ?)"
                 );
 
                 ps.setString(1, name);
@@ -77,6 +71,7 @@ public class page extends HttpServlet {
 
             } catch (Exception e) {
                 out.println("Error: " + e);
+                e.printStackTrace(out);
             }
         }
     }
