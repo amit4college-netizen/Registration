@@ -34,14 +34,13 @@ public class page extends HttpServlet {
                 Class.forName("com.mysql.cj.jdbc.Driver");
 
                 // Render environment variables
-                String host = System.getenv("DB_HOST");
-                String port = System.getenv("DB_PORT");
-                String db   = System.getenv("DB_NAME");
-                String user = System.getenv("DB_USER");
-                String pass = System.getenv("DB_PASSWORD");
+                String host = System.getenv("DB_HOSmysql-a7dcaeb-onlineokokok-2538.j.aivencloud.comT");
+                String port = System.getenv("13350");
+                String db   = System.getenv("defaultdb");
+                String user = System.getenv("avnadmin");
+                String pass = System.getenv("AVNS_zsVzU151_FGO3iuRyzR");
 
-                String url = "jdbc:mysql://avnadmin:AVNS_zsVzU151_FGO3iuRyzR@mysql-a7dcaeb-onlineokokok-2538.j.aivencloud.com:13350/defaultdb?ssl-mode=REQUIRED";
-
+                String url = "jdbc:mysql://" + host + ":" + port + "/" + db + "?sslMode=REQUIRED";
                 Connection con = DriverManager.getConnection(url, user, pass);
 
                 PreparedStatement ps = con.prepareStatement(
